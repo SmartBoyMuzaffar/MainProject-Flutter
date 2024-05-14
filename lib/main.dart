@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:My_App/led.dart';
 import 'package:My_App/door.dart';
@@ -178,7 +179,7 @@ class Home extends StatelessWidget {
         title: const Text('Smart Home'),
       ),
       backgroundColor: Colors.grey,
-      body: isPortrait ? Column(
+      body: isPortrait ? ListView(
           children: [Column(
             children: <Widget>[
               const SizedBox(height: 20),
@@ -368,7 +369,7 @@ class Home extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 1,
                 width: MediaQuery.of(context).size.width * 0.35,
 
-                child: Column(
+                child: ListView(
                   children: <Widget>[
                     const SizedBox(height: 20),
                     const Center(
