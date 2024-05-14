@@ -1,4 +1,4 @@
-name: Build Application
+name: Flutter CI
 
 on:
   workflow_dispatch:
@@ -31,7 +31,9 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
-    name: 🎉 Build
+
+  build-ios:
+    name: 🎉 iOS Build
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -54,15 +56,12 @@ jobs:
         working-directory: build/ios/iphoneos
 
       - name: Zip output
-        run: zip -qq -r -9 app-release.ipa Payload
+        run: zip -qq -r -9 FlutterIpaExport.ipa Payload
         working-directory: build/ios/iphoneos
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
-          name: Applications!
           tag: v0.1
           repo_token: ${{ secrets.TOKEN }}
-          path: |
-           build/app/outputs/app/app-release.apk
-           build/ios/iphoneos/app-release.ipa
+          file: build/ios/iphoneos/FlutterIpaExport.ipa
