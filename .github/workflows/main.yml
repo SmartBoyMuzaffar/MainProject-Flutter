@@ -56,7 +56,7 @@ jobs:
         working-directory: build/ios/iphoneos
 
       - name: Zip output
-        run: zip -qq -r -9 FlutterIpaExport.ipa Payload
+        run: zip -qq -r -9 app-release.ipa Payload
         working-directory: build/ios/iphoneos
 
       - name: Upload binaries to release
@@ -64,4 +64,4 @@ jobs:
         with:
           tag: IOSv0.1
           repo_token: ${{ secrets.TOKEN }}
-          file: build/ios/iphoneos/FlutterIpaExport.ipa
+          file: build/ios/iphoneos/app-release.ipa
