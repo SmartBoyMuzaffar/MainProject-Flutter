@@ -374,11 +374,11 @@ class Home extends StatelessWidget {
             children: <Widget>[
               SizedBox(
                 height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.325,
+                width: MediaQuery.of(context).size.width * 0.3,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.35,
+                width: MediaQuery.of(context).size.width * 0.4,
 
                 child: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
@@ -558,7 +558,7 @@ class Home extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.325,
+                width: MediaQuery.of(context).size.width * 0.3,
               )
           ],),
         );
