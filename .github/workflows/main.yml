@@ -26,10 +26,10 @@ jobs:
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: build
+        name: Build
         body: "Flutter Android and IOS App"
         tag: v0.1
         repo_token: ${{ secrets.TOKEN }}
         path: |
           build/app/outputs/flutter-apk/app-release.apk
-          build/ios/iphoneos/Runner.app
+          build/ios/iphoneos/FlutterIpaExport.ipa
