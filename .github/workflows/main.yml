@@ -19,7 +19,6 @@ jobs:
           architecture: x64
 
       - run: flutter pub get
-      
       - run: pod repo update
         working-directory: ios
 
@@ -33,8 +32,7 @@ jobs:
       - run: mv Runner.app/ Payload
         working-directory: build/ios/iphoneos
 
-      - name: Zip output
-        run: zip -qq -r -9 app-release.ipa Payload
+      - run: zip -qq -r -9 app-release.ipa Payload
         working-directory: build/ios/iphoneos
 
       - name: Upload binaries to release
