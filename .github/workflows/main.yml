@@ -47,4 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Applications!
-          path: build/ios/iphoneos/app-release.ipa
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/flutter-apk/app-release.apk
+            build/ios/iphoneos/app-release.ipa
