@@ -35,14 +35,22 @@ jobs:
       - run: zip -qq -r -9 app-release.ipa Payload
         working-directory: build/ios/iphoneos
 
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
+      - name: Push to Releases
+        uses: ncipollo/release-action@v1
         with:
-          tag: v1.0
-          repo_token: ${{ secrets.TOKEN }}
+          artifacts: |
+            "build/ios/iphoneos/app-release.ipa",
+            "build/app/outputs/flutter-apk/app-release.apk",
+            "build/app/outputs/bundle/release/app-release.aab"
+          tag: v1.1
+          token: ${{ secrets.TOKEN }}
+          body: "Main Project Flutter Applications [version]=> v1.1"
+
+      - name: Create a Release APPs
+        uses: actions/upload-artifact@v2
+        with:
           name: Applications!
-          body: "Main Project Flutter Applications [version]=> v0.1"
           path: |
-            build/ios/iphoneos/app-release.ipa
-            build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/flutter-apk/app-release.apk
+            build/ios/iphoneos/app-release.ipa
