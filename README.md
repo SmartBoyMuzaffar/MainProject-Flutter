@@ -1,4 +1,4 @@
-# main_project
+# Main Project
 
 A new Flutter project.
 
