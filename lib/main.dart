@@ -379,12 +379,12 @@ class Home extends StatelessWidget {
               Row(
                 children: <Widget>[
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.3,
+                    height: MediaQuery.of(context).size.height * 1,
+                    width: MediaQuery.of(context).size.width * 0.25,
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 1,
+                    width: MediaQuery.of(context).size.width * 0.5,
 
                     child: Column(
                           children: <Widget>[
@@ -558,16 +558,20 @@ class Home extends StatelessWidget {
 
                           ],),
                         ),
-                      ],),
-              Row(
-                children: <Widget>[
-                  Container(
-                    color: Colors.grey,
-                    height: MediaQuery.of(context).size.height * 0.42,
-                    width: MediaQuery.of(context).size.width * 1,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 1,
+                    width: MediaQuery.of(context).size.width * 0.25,
                   ),
-
-                ],),
+                      ],),
+              // Row(
+              //   children: <Widget>[
+              //     Container(
+              //       color: Colors.grey,
+              //       height: MediaQuery.of(context).size.height * 0.42,
+              //       width: MediaQuery.of(context).size.width * 1,
+              //     ),
+              //
+              //   ],),
 
           ],),
     ]),
