@@ -22,9 +22,9 @@ jobs:
       - run: pod repo update
         working-directory: ios
 
-      - run: flutter build ios --release
       - run: flutter build apk --release
       - run: flutter build appbundle --release
+      - run: flutter build ios --release --no-codesign
       
       - run: mkdir Payload
         working-directory: build/ios/iphoneos
