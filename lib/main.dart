@@ -1,4 +1,5 @@
 // import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:My_App/led.dart';
 import 'package:My_App/door.dart';
@@ -181,9 +182,11 @@ class Home extends StatelessWidget {
         title: const Text('Smart Home'),
       ),
       backgroundColor: Colors.grey,
-      body: isPortrait ? ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return Column(
+      // body: isPortrait ? ListView.builder(
+      //   itemBuilder: (BuildContext context, int index) {
+      body: isPortrait ? ListView(
+        children: [
+          Column(
               children: [Column(
                 children: <Widget>[
                   const SizedBox(height: 20),
@@ -369,107 +372,155 @@ class Home extends StatelessWidget {
                         .width * 1,
                   ),
                 ])
-              ]);
-        },) : Row(
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.3,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.4,
+              ]),
+    ],) : ListView(
+      children:<Widget> [ Column(
+            children: <Widget> [
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    width: MediaQuery.of(context).size.width * 0.3,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    width: MediaQuery.of(context).size.width * 0.4,
 
-                child: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      children: <Widget>[
-                        const SizedBox(height: 20),
-                        const Center(
-                          child: Text(
-                            'H O M E',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
+                    child: Column(
+                          children: <Widget>[
+                            const SizedBox(height: 20),
+                            const Center(
+                              child: Text(
+                                'H O M E',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      led(context, 'Led Control');
-                                    },
-                                    child: const Text(
-                                      'light',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 30.0,
-                                        fontWeight: FontWeight.bold,
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          led(context, 'Led Control');
+                                        },
+                                        child: const Text(
+                                          'light',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 30.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      door(context);
-                                    },
-                                    child: const Text(
-                                      'door',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 30.0,
-                                        fontWeight: FontWeight.bold,
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          door(context);
+                                        },
+                                        child: const Text(
+                                          'door',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 30.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 10,),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      heat(context);
-                                    },
-                                    child: const Text(
-                                      'heat',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 30.0,
-                                        fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 10,),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          heat(context);
+                                        },
+                                        child: const Text(
+                                          'heat',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 30.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10,),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          camera(context);
+                                        },
+                                        child: const Text(
+                                          'camera',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontSize: 26.5,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10,),
+                            ),
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        motion(context);
+                                      },
+                                      child: const Text(
+                                        'motion',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 30.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: Row(children: [
+                                Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      camera(context);
+                                      temp(context);
                                     },
                                     child: const Text(
-                                      'camera',
+                                      'temperature',
                                       style: TextStyle(
                                         color: Colors.red,
                                         fontSize: 26.5,
@@ -478,89 +529,48 @@ class Home extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    motion(context);
-                                  },
-                                  child: const Text(
-                                    'motion',
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 30.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Row(children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  temp(context);
-                                },
-                                child: const Text(
-                                  'temperature',
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 26.5,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                              ],
                               ),
                             ),
-                          ],
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    auto(context);
-                                  },
-                                  child: const Text(
-                                    'automation',
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 30.0,
-                                      fontWeight: FontWeight.bold,
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10, right: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        auto(context);
+                                      },
+                                      child: const Text(
+                                        'automation',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 30.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
+                            ),
 
-                      ],
-                    );
-                  },),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 1,
-                width: MediaQuery.of(context).size.width * 0.3,
-              )
+                          ],),
+                        ),
+                      ],),
+              Row(
+                children: <Widget>[
+                  Container(
+                    color: Colors.grey,
+                    height: MediaQuery.of(context).size.height * 0.42,
+                    width: MediaQuery.of(context).size.width * 1,
+                  ),
+
+                ],),
+
           ],),
+    ]),
         );
   }
 }
