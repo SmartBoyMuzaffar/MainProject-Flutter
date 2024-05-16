@@ -179,7 +179,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text(' KAFOLAT '),
+        title: const Text('KAFOLAT'),
       ),
       backgroundColor: Colors.grey,
       // body: isPortrait ? ListView.builder(
