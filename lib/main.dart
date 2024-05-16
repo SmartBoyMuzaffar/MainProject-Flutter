@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Main Project',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -179,7 +179,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Smart Home'),
+        title: const Text('KAFOLAT'),
       ),
       backgroundColor: Colors.grey,
       // body: isPortrait ? ListView.builder(
