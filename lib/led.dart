@@ -23,7 +23,7 @@ class Led extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                final url = Uri.parse('http://172.20.10.3/on');
+                final url = Uri.parse('http://192.168.0.12/on');
                 await url.request();
               },
               child: const Text("O N", style: TextStyle(color: Colors.green, fontSize: 50)),
@@ -31,7 +31,7 @@ class Led extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                final url = Uri.parse('http://172.20.10.3/off');
+                final url = Uri.parse('http://192.168.0.12/off');
                 await url.request();
               },
               child: const Text("O F F", style: TextStyle(color: Colors.red, fontSize: 50)),
