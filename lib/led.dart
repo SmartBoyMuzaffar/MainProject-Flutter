@@ -1,5 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:request/request.dart' as http;
+import 'package:postgres/postgres.dart';
+import 'package:request/request.dart';
+import 'package:http/http.dart' as http;
+
+// #############################################################################
+// class DataBase {
+//   // id required
+//   // final int id = 001;
+//   final String id="001";
+//   late String ip;
+//
+//   connect() async {
+//     final conn = await Connection.open(Endpoint(
+//       host: 'dpg-cnlujkol5elc73cb0e20-a.oregon-postgres.render.com',
+//       database: 'pgdb_y28n',
+//       username: 'postgresql',
+//       password: 'oW0Al1JPI03FikwBTkAQcX4d5STstWy0',
+//
+//     ));
+//     ip = (await conn.execute("SELECT ip_address FROM esp32_ip WHERE id = $id")) as String;
+//     await conn.close();
+//     return ip;
+//   }
+// }
+// #############################################################################
+class DataBase {
+  final String id = "001";
+  late String ip;
+
+  Future<String> connect() async {
+    final conn = PostgreSQLConnection(
+      'dpg-cnlujkol5elc73cb0e20-a.oregon-postgres.render.com',
+      5432,
+      'pgdb_y28n',
+      username: 'postgresql',
+      password: 'oW0Al1JPI03FikwBTkAQcX4d5STstWy0',
+      useSSL: true,
+    );
+
+    await conn.open();
+    List<List<dynamic>> results = await conn.query(
+      "SELECT ip_address FROM esp32_ip WHERE id = @id",
+      substitutionValues: {'id': id},
+    );
+    await conn.close();
+
+    if (results.isNotEmpty) {
+      ip = results[0][0];
+      return ip;
+    } else {
+      throw Exception('IP address not found for ID $id');
+    }
+  }
+}
+// #############################################################################
+
 
 class Led extends StatelessWidget {
   const Led({super.key, required this.title});
@@ -13,6 +68,11 @@ class Led extends StatelessWidget {
     final _title = args['title'];
     final _description = args['description'];
 
+    print("Trying to connect to database");
+    DataBase db = DataBase();
+    db.connect();
+    print("Connected to database");
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -23,8 +83,10 @@ class Led extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                // final url = Uri.parse('http://192.168.0.12/on');
-                final url = Uri.parse('http://172.20.10.3/on');
+                DataBase db = DataBase();
+                final ipAddress = await db.connect();
+                print(ipAddress);
+                final url = Uri.parse('http://$ipAddress/on');
                 await url.request();
               },
               child: const Text("O N", style: TextStyle(color: Colors.green, fontSize: 50)),
@@ -32,8 +94,10 @@ class Led extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                // final url = Uri.parse('http://192.168.0.12/off');
-                final url = Uri.parse('http://172.20.10.3/off');
+                DataBase db = DataBase();
+                final ipAddress = await db.connect();
+                print(ipAddress);
+                final url = Uri.parse('http://$ipAddress/off');
                 await url.request();
               },
               child: const Text("O F F", style: TextStyle(color: Colors.red, fontSize: 50)),

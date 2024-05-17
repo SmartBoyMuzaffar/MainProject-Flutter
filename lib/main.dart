@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
     // },
       routes: {
         Home.routeName: (context) => const Home(),
-        Led.routeName: (context) => const Led(title: 'Led Control',),
+        Led.routeName: (context) => const Led(title: 'Led Control'),
         Door.routeName: (context) => const Door(),
         Camera.routeName: (context) => const Camera(),
         Heat.routeName: (context) => const Heat(),
