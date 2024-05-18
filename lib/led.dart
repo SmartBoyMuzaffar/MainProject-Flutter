@@ -23,7 +23,7 @@ import 'package:http/http.dart' as http;
 //     return ip;
 //   }
 // }
-// #############################################################################
+// // #############################################################################
 class DataBase {
   final String id = "001";
   late String ip;
@@ -38,20 +38,26 @@ class DataBase {
       useSSL: true,
     );
 
-    await conn.open();
-    List<List<dynamic>> results = await conn.query(
-      "SELECT ip_address FROM esp32_ip WHERE id = @id",
-      substitutionValues: {'id': id},
-    );
-    await conn.close();
+    try {
+      await conn.open();
+      List<List<dynamic>> results = await conn.query(
+        "SELECT ip_address FROM esp32_ip WHERE id = @id",
+        substitutionValues: {'id': id},
+      );
+      await conn.close();
 
-    if (results.isNotEmpty) {
-      ip = results[0][0];
-      return ip;
-    } else {
-      throw Exception('IP address not found for ID $id');
+      if (results.isNotEmpty) {
+        ip = results[0][0];
+        return ip;
+      } else {
+        throw Exception('IP address not found for ID $id');
+      }
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
     }
   }
+
 }
 // #############################################################################
 
@@ -85,7 +91,6 @@ class Led extends StatelessWidget {
               onPressed: () async {
                 DataBase db = DataBase();
                 final ipAddress = await db.connect();
-                print(ipAddress);
                 final url = Uri.parse('http://$ipAddress/on');
                 await url.request();
               },
