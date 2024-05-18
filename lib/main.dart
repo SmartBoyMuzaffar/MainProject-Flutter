@@ -91,9 +91,9 @@ class MyApp extends StatelessWidget {
         Home.routeName: (context) => const Home(),
         Led.routeName: (context) => const Led(title: 'Led Control'),
         Door.routeName: (context) => const Door(),
-        Camera.routeName: (context) => const Camera(),
         Heat.routeName: (context) => const Heat(),
         Motion.routeName: (context) => const Motion(),
+        Camera.routeName: (context) => const Camera(),
         Temp.routeName: (context) => const Temp(),
         Auto.routeName: (context) => const Auto(),
       },
@@ -135,6 +135,15 @@ class Home extends StatelessWidget {
     });
 
   }
+  void motion(BuildContext context) {
+    // Navigator.push(context, MaterialPageRoute(builder: (_) {
+    //   return const Motion();
+    // }));
+
+    Navigator.pushNamed(context, Motion.routeName, arguments: {
+      'title': 'Motion Control',
+    });
+  }
   void camera(BuildContext context) {
     // Navigator.push(context, MaterialPageRoute(builder: (_) {
     //   return const Camera();
@@ -144,15 +153,6 @@ class Home extends StatelessWidget {
       'title': 'Door Control',
     });
 
-  }
-  void motion(BuildContext context) {
-    // Navigator.push(context, MaterialPageRoute(builder: (_) {
-    //   return const Motion();
-    // }));
-
-    Navigator.pushNamed(context, Motion.routeName, arguments: {
-      'title': 'Motion Control',
-    });
   }
   void temp(BuildContext context) {
     // Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -271,10 +271,10 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 10,),
                             child: ElevatedButton(
                               onPressed: () {
-                                camera(context);
+                                motion(context);
                               },
                               child: const Text(
-                                'camera',
+                                'motion',
                                 style: TextStyle(
                                   color: Colors.red,
                                   fontSize: 26.5,
@@ -295,10 +295,10 @@ class Home extends StatelessWidget {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              motion(context);
+                              camera(context);
                             },
                             child: const Text(
-                              'motion',
+                              'camera',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 30.0,
@@ -470,10 +470,10 @@ class Home extends StatelessWidget {
                                       padding: const EdgeInsets.only(left: 10,),
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          camera(context);
+                                          motion(context);
                                         },
                                         child: const Text(
-                                          'camera',
+                                          'motion',
                                           style: TextStyle(
                                             color: Colors.red,
                                             fontSize: 26.5,
@@ -494,10 +494,10 @@ class Home extends StatelessWidget {
                                   Expanded(
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        motion(context);
+                                        camera(context);
                                       },
                                       child: const Text(
-                                        'motion',
+                                        'camera',
                                         style: TextStyle(
                                           color: Colors.red,
                                           fontSize: 30.0,

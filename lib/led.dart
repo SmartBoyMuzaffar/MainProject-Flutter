@@ -25,14 +25,14 @@ import 'package:http/http.dart' as http;
 // }
 // // #############################################################################
 class DataBase {
-  final String id = "001";
+  final String id = "11111111111";
   late String ip;
 
   Future<String> connect() async {
     final conn = PostgreSQLConnection(
       'dpg-cnlujkol5elc73cb0e20-a.oregon-postgres.render.com',
       5432,
-      'pgdb_y28n',
+      'kafolat',
       username: 'postgresql',
       password: 'oW0Al1JPI03FikwBTkAQcX4d5STstWy0',
       useSSL: true,
@@ -41,7 +41,7 @@ class DataBase {
     try {
       await conn.open();
       List<List<dynamic>> results = await conn.query(
-        "SELECT ip_address FROM esp32_ip WHERE id = @id",
+        "SELECT s_ip FROM ip_address WHERE s_id = @id",
         substitutionValues: {'id': id},
       );
       await conn.close();
