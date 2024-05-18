@@ -101,7 +101,6 @@ class Led extends StatelessWidget {
               onPressed: () async {
                 DataBase db = DataBase();
                 final ipAddress = await db.connect();
-                print(ipAddress);
                 final url = Uri.parse('http://$ipAddress/off');
                 await url.request();
               },
