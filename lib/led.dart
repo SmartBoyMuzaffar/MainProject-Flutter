@@ -89,7 +89,6 @@ class Led extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () async {
-                DataBase db = DataBase();
                 final ipAddress = await db.connect();
                 final url = Uri.parse('http://$ipAddress/on');
                 await url.request();
@@ -99,7 +98,6 @@ class Led extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                DataBase db = DataBase();
                 final ipAddress = await db.connect();
                 final url = Uri.parse('http://$ipAddress/off');
                 await url.request();
