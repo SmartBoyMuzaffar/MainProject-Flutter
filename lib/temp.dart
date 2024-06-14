@@ -10,11 +10,11 @@ class DataBase {
 
   Future<void> connect() async {
     final conn = PostgreSQLConnection(
-      'dpg-cnlujkol5elc73cb0e20-a.oregon-postgres.render.com',
-      5432,
+      'postgres-smartboy.h.aivencloud.com',
+      26207,
       'kafolat',
-      username: 'postgresql',
-      password: 'oW0Al1JPI03FikwBTkAQcX4d5STstWy0',
+      username: 'avnadmin',
+      password: 'AVNS_QHbuDuXH6nTNUi9IvFo',
       useSSL: true,
     );
 
