@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Main Project',
+      title: 'KAFOLAT',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
