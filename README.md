@@ -1,4 +1,4 @@
-# Main Project
+# KAFOLAT
 
 A new Flutter project.
 
